@@ -12,7 +12,7 @@ public struct TowerInfo {
     public int useBulletID;             // 使用子弹的id
     public int basePrice;
     public int maxLevel;
-    public int shotRate;                // 每秒发射的子弹数
+    public float shotRate;                // 个数/秒
     public float guardRange;            // 守卫范围
     public string normalIcon;
     public string disableIcon;

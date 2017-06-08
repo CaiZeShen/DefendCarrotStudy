@@ -240,6 +240,16 @@ public class Map : MonoBehaviour {
             0
         );
     }
+
+    public Tile GetTile(Vector3 worldPos) {
+        // 获取相对原地的左边，也就是转换没有负数的坐标
+        Vector3 relativePos = worldPos - origin;
+
+        int tileX = (int)(relativePos.x / tileWidth);
+        int tileY = (int)(relativePos.y / tileHeight);
+
+        return GetTile(tileX, tileY);
+    }
     #endregion
 
     #region 私有方法
@@ -275,6 +285,12 @@ public class Map : MonoBehaviour {
         origin = new Vector3(-mapWidth / 2, -mapHeight / 2);
     }
 
+    // 获取鼠标下面的格子
+    private Tile GetTileUnderMouse() {
+        Vector3 worldPos = GetWorldPosOnMouse();
+        return GetTile(worldPos);
+    }
+
     // 根据格子索引号获得格子
     private Tile GetTile(int tileX, int tileY) {
         int index = tileX + tileY * ColumnCount;
@@ -285,19 +301,6 @@ public class Map : MonoBehaviour {
         }
 
         return grids[index];
-    }
-
-    // 获取鼠标下面的格子
-    private Tile GetTileUnderMouse() {
-        Vector3 worldPos = GetWorldPosOnMouse();
-
-        // 获取相对原地的左边，也就是装换没有负数的坐标
-        Vector3 relativePos = worldPos - origin;
-
-        int tileX = (int)(relativePos.x / tileWidth);
-        int tileY = (int)(relativePos.y / tileHeight);
-
-        return GetTile(tileX, tileY);
     }
 
     // 获取鼠标所在位置的世界坐标

@@ -23,16 +23,14 @@ public class ObjectPool:SingletonMono<ObjectPool> {
 
     // 回收对象
     public void Unspawn(GameObject gameObject) {
-        SubPool pool = null;
-
         foreach (SubPool p in pools.Values) {
             if (p.Contains(gameObject)) {
-                pool = p;
-                break;
+                p.Unspawn(gameObject);
+                return;
             }
         }
 
-        pool.Unspawn(gameObject);
+        Destroy(gameObject);
     }
 
     // 回收全部对象

@@ -29,7 +29,7 @@ public class TowerPopup : View {
         switch (eventName) {
             case Consts.E_ShowSpawnPanel:
                 ShowSpawnPanelArgs spawnArgs = args as ShowSpawnPanelArgs;
-                ShowSpawnPanel(spawnArgs.positon, spawnArgs.upSide);
+                ShowSpawnPanel(spawnArgs.position, spawnArgs.upSide);
                 break;
             case Consts.E_ShowUpgradePanel:
                 ShowUpgradePanelArgs upgradeArgs = args as ShowUpgradePanelArgs;

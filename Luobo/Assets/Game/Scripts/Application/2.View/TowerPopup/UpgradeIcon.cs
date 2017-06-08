@@ -17,9 +17,9 @@ public class UpgradeIcon : MonoBehaviour {
 
         // 加载图片
         TowerInfo info = Game.Instance.StaticData.GetTowerInfo(tower.ID);
-        string icon = "upgrade_Top";
+        string icon = "upgrade_Top.png";
         if (!tower.IsTopLevel) {
-            icon = gm.Gold >= (info.basePrice / 2) ? "upgrade_180" : "upgrade_-180";
+            icon = gm.Gold >= (info.basePrice / 2) ? "upgrade_180.png" : "upgrade_-180.png";
         }
         render.sprite = ResourcesMgr.Instance.Load<Sprite>(Consts.TowerIconResDir+icon);
     }

@@ -11,7 +11,7 @@ public class Tile {
     public int x;
     public int y;
     public bool canHold;    // 是否可以放置炮塔
-    public object data;     // 格子所保存的数据
+    public Tower tower;     // 格子所保存的数据
 
     public Tile(int x,int y) {
         this.x = x;

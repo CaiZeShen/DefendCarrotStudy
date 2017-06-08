@@ -42,8 +42,8 @@ public class StaticData : Singleton<StaticData> {
     }
 
     private void InitTowerInfos() {
-        towerInfos.Add(0, new TowerInfo {id=0,prefabName="Bottle",normalIcon="Bottle01.png",disableIcon= "Bottle00.png", maxLevel=3,basePrice=5, shotRate=2,guardRange=3f,useBulletID=0});
-        towerInfos.Add(1, new TowerInfo {id=1,prefabName="Fan",   normalIcon= "Fan01.png",   disableIcon= "Fan00.png",   maxLevel=3,basePrice=10, shotRate=1,guardRange=4f,useBulletID=1});
+        towerInfos.Add(0, new TowerInfo {id=0,prefabName="Bottle",normalIcon="Bottle01.png",disableIcon= "Bottle00.png", maxLevel=3,basePrice=5, shotRate=2,guardRange=1.2f,useBulletID=0});
+        towerInfos.Add(1, new TowerInfo {id=1,prefabName="Fan",   normalIcon= "Fan01.png",   disableIcon= "Fan00.png",   maxLevel=3,basePrice=10, shotRate=1,guardRange=1.5f,useBulletID=1});
     }
 
     private void InitBulletInfos() {

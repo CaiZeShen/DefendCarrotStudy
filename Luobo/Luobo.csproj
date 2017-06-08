@@ -137,6 +137,8 @@
     <Compile Include="Assets\Game\Scripts\Application\Misc\Leaf.cs" />
     <Compile Include="Assets\Game\Scripts\Application\Misc\Saver.cs" />
     <Compile Include="Assets\Game\Scripts\Application\Misc\Tools.cs" />
+    <Compile Include="Assets\Game\Scripts\Application\Objects\Bottle.cs" />
+    <Compile Include="Assets\Game\Scripts\Application\Objects\Fan.cs" />
     <Compile Include="Assets\Game\Scripts\Application\Objects\Luobo.cs" />
     <Compile Include="Assets\Game\Scripts\Application\Objects\Map.cs" />
     <Compile Include="Assets\Game\Scripts\Application\Objects\Monster.cs" />
@@ -155,7 +157,6 @@
     <Compile Include="Assets\Game\Scripts\Framewrok\Manager\ResourcesMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Framewrok\Manager\SceneMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Framewrok\Manager\SoundMgr.cs" />
-    <Compile Include="Assets\Game\Scripts\Framewrok\Pool\IReusable.cs" />
     <Compile Include="Assets\Game\Scripts\Framewrok\Pool\ObjectPool.cs" />
     <Compile Include="Assets\Game\Scripts\Framewrok\Pool\ReusableObject.cs" />
     <Compile Include="Assets\Game\Scripts\Framewrok\Pool\SubPool.cs" />

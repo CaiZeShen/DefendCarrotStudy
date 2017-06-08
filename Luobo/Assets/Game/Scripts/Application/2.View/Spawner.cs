@@ -69,17 +69,17 @@ public class Spawner : View {
 
         Tile tile = e.tile;
 
-        if (tile.data == null) {
+        if (tile.tower == null) {
             // 发送显示建塔面板事件
             ShowSpawnPanelArgs e1 = new ShowSpawnPanelArgs {
-                positon = map.GetPosition(tile),
+                position = map.GetPosition(tile),
                 upSide = tile.y < (Map.RowCount / 2),
             };
             SendEvent(Consts.E_ShowSpawnPanel, e1);
         } else {
             // 发送显示升级塔面板事件
             ShowUpgradePanelArgs e2 = new ShowUpgradePanelArgs {
-                tower = tile.data as Tower,
+                tower = tile.tower,
             };
             SendEvent(Consts.E_ShowUpgradePanel, e2);
         }
@@ -133,10 +133,18 @@ public class Spawner : View {
 
     // 生产塔
     private void SpawnTower(int towerID, Vector3 pos) {
+        // 生成塔
         TowerInfo info = Game.Instance.StaticData.GetTowerInfo(towerID);
         GameObject go = Game.Instance.ObjectPool.Spawn(info.prefabName);
-        go.transform.position = pos;
-        
+
+        // 设置塔信息
+        Tower tower = go.GetComponent<Tower>();
+        tower.transform.position = pos;
+        Tile tile = map.GetTile(pos);
+        tower.Load(towerID, tile);
+
+        // 设置塔所在格子信息
+        tile.tower = tower;
         
 
         // 消耗金币(写这里感觉不对,应该在控制器写吧)

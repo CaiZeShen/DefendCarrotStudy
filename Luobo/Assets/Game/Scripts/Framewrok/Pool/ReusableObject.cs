@@ -8,7 +8,7 @@ using UnityEngine;
 // 修改内容：										修改者姓名：
 // ****************************************************************
 
-public abstract class ReusableObject : MonoBehaviour, IReusable {
+public abstract class ReusableObject : MonoBehaviour{
     public abstract void OnSpawn();
 
     public abstract void OnUnspawn();

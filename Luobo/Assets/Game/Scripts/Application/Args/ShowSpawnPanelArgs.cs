@@ -8,7 +8,7 @@ using UnityEngine;
 // ****************************************************************
 
 public class ShowSpawnPanelArgs {
-    public Vector3 positon;
+    public Vector3 position;
     public bool upSide;
 }
 

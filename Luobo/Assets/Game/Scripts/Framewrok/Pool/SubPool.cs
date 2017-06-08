@@ -27,32 +27,41 @@ public class SubPool {
 
     // 生产对象
     public GameObject Spawn() {
-        GameObject result=null;
+        GameObject go=null;
         
         foreach (GameObject item in objects) {
             // 池中有可使用的对象
             if (!item.activeSelf) {
-                result = item;
-                result.SetActive(true);
+                go = item;
+                go.SetActive(true);
                 break;
             }
         }
 
         // 池中没可使用的对象
-        if (result==null) {
-            result = Object.Instantiate(prefab, parent);
-            objects.Add(result);
+        if (go==null) {
+            go = Object.Instantiate(prefab, parent);
+            objects.Add(go);
         }
 
-        result.SendMessage("OnSpawn", SendMessageOptions.DontRequireReceiver);
-        return result;
+        ReusableObject reusableO= go.GetComponent<ReusableObject>();
+        if (reusableO!=null) {
+            reusableO.OnSpawn();
+        }
+
+        return go;
     }
 
     // 回收对象
-    public void Unspawn(GameObject gameObject) {
-        if (Contains(gameObject)) {
-            gameObject.SendMessage("OnUnspawn", SendMessageOptions.DontRequireReceiver);
-            gameObject.SetActive(false);
+    public void Unspawn(GameObject go) {
+        if (Contains(go)) {
+
+            ReusableObject reusableO = go.GetComponent<ReusableObject>();
+            if (reusableO != null) {
+                reusableO.OnUnspawn();
+            }
+
+            go.SetActive(false);
         }
     }
 

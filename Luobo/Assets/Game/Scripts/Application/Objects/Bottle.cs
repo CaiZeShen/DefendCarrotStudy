@@ -1,17 +1,21 @@
+using System;
 using UnityEngine;
 
 // ****************************************************************
-// 功能：可重用对象接口，用于对象池
+// 功能：
 // 创建：蔡泽深
-// 时间：2017/05/31
+// 时间：2017/06/08
 // 修改内容：										修改者姓名：
 // ****************************************************************
 
-public interface IReusable {
-    // 生产对象时被调用
-    void OnSpawn();
+public class Bottle : Tower {
 
-    // 回收对象时被调用
-    void OnUnspawn();
+    public override void Attack() {
+        // 播放动画
+        animator.SetTrigger("Fire");
+
+        // 声音
+
+    } 
 }
 
