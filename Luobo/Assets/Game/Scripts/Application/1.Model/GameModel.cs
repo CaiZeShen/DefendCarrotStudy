@@ -86,7 +86,6 @@ public class GameModel : Model {
     public void StartLevel(int levelIndex) {
         currentLevelIndex = levelIndex;
         gold = PlayLevel.initSocre;
-        isPlaying = true;
     }
 
     // 游戏结束

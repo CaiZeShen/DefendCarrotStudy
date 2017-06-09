@@ -63,6 +63,11 @@ public class Map : MonoBehaviour {
             return path;
         }
     }
+
+    public Rect MapRect {
+        get { return new Rect(-mapWidth / 2, -mapHeight / 2, mapWidth, mapHeight); }
+    }
+
     #endregion
 
     #region Unity 回调

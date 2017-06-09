@@ -9,13 +9,23 @@ using UnityEngine;
 // ****************************************************************
 
 public class Bottle : Tower {
+    private Transform shotPoint;
+
+    protected override void Awake() {
+        base.Awake();
+        shotPoint = transform.GetChild(0).Find("ShotPoint");
+    }
 
     public override void Attack() {
         // 播放动画
         animator.SetTrigger("Fire");
 
-        // 声音
+        BulletInfo Info= Game.Instance.StaticData.GetBulletInfo(UseBulletID);
+        BottleBullet bullet = Game.Instance.ObjectPool.Spawn(Info.prefabName).GetComponent<BottleBullet>();
 
+        bullet.transform.position = shotPoint.position;
+
+        bullet.Load(UseBulletID, Level, mapRect, target);
     } 
 }
 

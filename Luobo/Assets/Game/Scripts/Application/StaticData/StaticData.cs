@@ -12,6 +12,7 @@ public class StaticData : Singleton<StaticData> {
     private Dictionary<int, MonsterInfo> monsterInfos = new Dictionary<int, MonsterInfo>();
     private Dictionary<int, LuoboInfo> luoboInfos = new Dictionary<int, LuoboInfo>();
     private Dictionary<int, TowerInfo> towerInfos = new Dictionary<int, TowerInfo>();
+    private Dictionary<int, BulletInfo> bulletInfos = new Dictionary<int, BulletInfo>();
 
     public StaticData() {
         InitMonsterInfos();
@@ -21,7 +22,7 @@ public class StaticData : Singleton<StaticData> {
     }
 
     private void InitMonsterInfos() {
-        monsterInfos.Add(0, new MonsterInfo { id=0, hp = 1, moveSpeed = 1.5f });
+        monsterInfos.Add(0, new MonsterInfo { id = 0, hp = 1, moveSpeed = 1.5f });
         monsterInfos.Add(1, new MonsterInfo { id = 1, hp = 2, moveSpeed = 1.5f });
         monsterInfos.Add(2, new MonsterInfo { id = 2, hp = 3, moveSpeed = 1.5f });
         monsterInfos.Add(3, new MonsterInfo { id = 3, hp = 4, moveSpeed = 1.5f });
@@ -42,12 +43,13 @@ public class StaticData : Singleton<StaticData> {
     }
 
     private void InitTowerInfos() {
-        towerInfos.Add(0, new TowerInfo {id=0,prefabName="Bottle",normalIcon="Bottle01.png",disableIcon= "Bottle00.png", maxLevel=3,basePrice=5, shotRate=2,guardRange=1.2f,useBulletID=0});
-        towerInfos.Add(1, new TowerInfo {id=1,prefabName="Fan",   normalIcon= "Fan01.png",   disableIcon= "Fan00.png",   maxLevel=3,basePrice=10, shotRate=1,guardRange=1.5f,useBulletID=1});
+        towerInfos.Add(0, new TowerInfo { id = 0, prefabName = "Bottle", normalIcon = "Bottle01.png", disableIcon = "Bottle00.png", maxLevel = 3, basePrice = 5, shotRate = 2, guardRange = 1.2f, useBulletID = 0 });
+        towerInfos.Add(1, new TowerInfo { id = 1, prefabName = "Fan", normalIcon = "Fan01.png", disableIcon = "Fan00.png", maxLevel = 3, basePrice = 10, shotRate = 1, guardRange = 1.5f, useBulletID = 1 });
     }
 
     private void InitBulletInfos() {
-
+        bulletInfos.Add(0, new BulletInfo { id = 0, prefabName = "BottleBullet", baseSpeed = 5f, baseAttack = 1 });
+        bulletInfos.Add(1, new BulletInfo { id = 1, prefabName = "FanBullet", baseSpeed = 3f, baseAttack = 1 });
     }
 
     public MonsterInfo GetMonsterInfo(int monsterType) {
@@ -66,6 +68,13 @@ public class StaticData : Singleton<StaticData> {
             throw new Exception("没找到指定塔的静态数据: " + id);
         }
         return towerInfos[id];
+    }
+
+    public BulletInfo GetBulletInfo(int id) {
+        if (!bulletInfos.ContainsKey(id)) {
+            throw new Exception("没找到指定子弹的静态数据: " + id);
+        }
+        return bulletInfos[id];
     }
 }
 

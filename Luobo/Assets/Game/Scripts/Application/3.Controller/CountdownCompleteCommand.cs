@@ -10,6 +10,9 @@ using UnityEngine;
 
 public class CountdownCompleteCommand : Controller {
     public override void Execute(object args) {
+        GameModel gm = GetModel<GameModel>();
+        gm.IsPlaying = true;
+
         RoundModel roundModel = GetModel<RoundModel>();
         roundModel.StartRounds();
     }

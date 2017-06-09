@@ -115,10 +115,20 @@ public static class Tools {
 
         sb.AppendLine("</Level>");
 
-        StreamWriter sw = new StreamWriter(fileName, false, Encoding.UTF8);
-        sw.Write(sb.ToString());
-        sw.Flush();
-        sw.Dispose();
+        // xml格式化设置
+        XmlWriterSettings setting= new XmlWriterSettings();
+        setting.Indent = true;
+        setting.IndentChars = "\t";
+        setting.ConformanceLevel = ConformanceLevel.Auto;
+        setting.OmitXmlDeclaration = false;
+
+        XmlWriter xw = XmlWriter.Create(fileName, setting);
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(sb.ToString());
+        doc.WriteTo(xw);
+
+        xw.Flush();
+        xw.Close();
     }
 
     // 保存关卡(第二种方法: XmlDocument类)

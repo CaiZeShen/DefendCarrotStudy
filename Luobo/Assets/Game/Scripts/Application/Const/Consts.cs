@@ -49,12 +49,10 @@ public static class Consts {
     public const string E_StartRound = "E_StartRound";                  // 参数: StartRoundArgs
     public const string E_SpawnMonster = "E_SpawnMonster";              // 参数: SpawnMonsterArgs
 
-    public const string E_ShowSpawnPanel = "E_ShowSpawnPanel";          // 参数: ShowSpawnPanelArgs
-    public const string E_ShowUpgradePanel = "E_ShowUpgradePanel";      // 参数: ShowUpgradePanelArgs
-    public const string E_HidePopups = "E_HidePopups";
     public const string E_SpawnTower = "E_SpawnTower";                  // 参数: SpawnTowerArgs
     public const string E_UpgradeTower = "E_UpgradeTower";              // 参数: UpgradeTowerArgs
     public const string E_SellTower = "E_SellTower";                    // 参数: SellTowerArgs
+    public const string E_MapTileClick = "E_MapTileClick";              // 参数: MapTileClickArgs
 
     // 场景名
     public const string Init = "0.Init";

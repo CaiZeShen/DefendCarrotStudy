@@ -29,6 +29,8 @@ public class StartUpCommand : Controller {
         RegisterController(Consts.E_UpgradeTower, typeof(UpgradeTowerCommand));
         RegisterController(Consts.E_SellTower, typeof(SellTowerCommand));
 
+        RegisterController(Consts.E_MapTileClick, typeof(MapTileClickCommand));
+
         //初始化 (连接服务器，加载静态数据。。。)
         GetModel<GameModel>().Initialize();
 

@@ -18,6 +18,8 @@ public abstract class Tower : ReusableObject {
     protected CircleCollider2D circleCollider;
     protected float guardRange = 0;
     protected float lastAttackTime = 0;
+    protected Rect mapRect;
+
 
     public int ID { get; private set; }
 
@@ -58,8 +60,9 @@ public abstract class Tower : ReusableObject {
 
     public int UseBulletID { get; private set; }
 
-    public void Load(int towerID, Tile tile) {
+    public void Load(int towerID, Tile tile,Rect mapRect) {
         this.tile = tile;
+        this.mapRect = mapRect;
 
         TowerInfo info = Game.Instance.StaticData.GetTowerInfo(towerID);
 

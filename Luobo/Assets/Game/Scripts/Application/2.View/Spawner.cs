@@ -58,31 +58,8 @@ public class Spawner : View {
 
     // 地图格子被点击
     private void OnMapTileClick(object sender, TileClickEvnetArgs e) {
-        if (!gameModel.IsPlaying) {
-            return;
-        }
-
-        if (!e.tile.canHold) {
-            SendEvent(Consts.E_HidePopups);
-            return;
-        }
-
-        Tile tile = e.tile;
-
-        if (tile.tower == null) {
-            // 发送显示建塔面板事件
-            ShowSpawnPanelArgs e1 = new ShowSpawnPanelArgs {
-                position = map.GetPosition(tile),
-                upSide = tile.y < (Map.RowCount / 2),
-            };
-            SendEvent(Consts.E_ShowSpawnPanel, e1);
-        } else {
-            // 发送显示升级塔面板事件
-            ShowUpgradePanelArgs e2 = new ShowUpgradePanelArgs {
-                tower = tile.tower,
-            };
-            SendEvent(Consts.E_ShowUpgradePanel, e2);
-        }
+        MapTileClickArgs mTArgs = new MapTileClickArgs { map = sender as Map, tile = e.tile, mouseButton = e.mouseButton };
+        SendEvent(Consts.E_MapTileClick, mTArgs);
     }
 
 
@@ -91,14 +68,7 @@ public class Spawner : View {
         // 萝卜掉血
         luobo.Damage(1);
 
-        // 回收怪物
-        Game.Instance.ObjectPool.Unspawn(obj.gameObject);
-
-        GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
-
-        if (!luobo.IsDead && roundModel.AllRoundsComplete && monsters.Length <= 0) {
-            SendEvent(Consts.E_EndLevel, new EndLevelArgs { LevelID = gameModel.CurrentLevelIndex, IsWin = true });
-        }
+        obj.HP = 0;
     }
 
     // 怪物血量改变
@@ -108,7 +78,14 @@ public class Spawner : View {
 
     // 怪物死亡
     private void OnMonsterDied(Role obj) {
+        Game.Instance.ObjectPool.Unspawn(obj.gameObject);
 
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
+
+        // 判断是否胜利
+        if (!luobo.IsDead && roundModel.AllRoundsComplete && monsters.Length <= 0) {
+            SendEvent(Consts.E_EndLevel, new EndLevelArgs { LevelID = gameModel.CurrentLevelIndex, IsWin = true });
+        }
     }
 
     // 萝卜死亡
@@ -141,7 +118,7 @@ public class Spawner : View {
         Tower tower = go.GetComponent<Tower>();
         tower.transform.position = pos;
         Tile tile = map.GetTile(pos);
-        tower.Load(towerID, tile);
+        tower.Load(towerID, tile,map.MapRect);
 
         // 设置塔所在格子信息
         tile.tower = tower;

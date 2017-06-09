@@ -19,28 +19,37 @@ public class TowerPopup : View {
         }
     }
 
-    public override void RegisterEvents() {
-        attentionEvnets.Add(Consts.E_ShowSpawnPanel);
-        attentionEvnets.Add(Consts.E_ShowUpgradePanel);
-        attentionEvnets.Add(Consts.E_HidePopups);
+    public bool IsPopShow {
+        get {
+            if (spawnPanel.gameObject.activeSelf) {
+                return true;
+            } else if(upgradePanel.gameObject.activeSelf) {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    public void HidePopups() {
+        spawnPanel.Hide();
+        upgradePanel.Hide();
+    }
+
+    public void ShowSpawnPanel(Vector3 pos, bool upSide) {
+        HidePopups();
+
+        spawnPanel.Show(gm, pos, upSide);
+    }
+
+    public void ShowUpgradePanel(Tower tower) {
+        HidePopups();
+
+        upgradePanel.Show(tower, gm);
     }
 
     public override void HandleEvent(string eventName, object args) {
-        switch (eventName) {
-            case Consts.E_ShowSpawnPanel:
-                ShowSpawnPanelArgs spawnArgs = args as ShowSpawnPanelArgs;
-                ShowSpawnPanel(spawnArgs.position, spawnArgs.upSide);
-                break;
-            case Consts.E_ShowUpgradePanel:
-                ShowUpgradePanelArgs upgradeArgs = args as ShowUpgradePanelArgs;
-                ShowUpgradePanel(upgradeArgs.tower);
-                break;
-            case Consts.E_HidePopups:
-                HidePopups();
-                break;
-            default:
-                break;
-        }
+
     }
 
     #region Unity Lifecycle
@@ -49,6 +58,10 @@ public class TowerPopup : View {
         upgradePanel = GetComponentInChildren<UpgradePanel>();
 
         gm = GetModel<GameModel>();
+    }
+
+    private void Start() {
+        HidePopups();
     }
     #endregion
 
@@ -67,24 +80,7 @@ public class TowerPopup : View {
 
     private void OnSellTower(Tower tower) {
         SendEvent(Consts.E_SellTower, new UpgradeTowerArgs { tower = tower });
-    } 
+    }
     #endregion
-
-    private void ShowSpawnPanel(Vector3 pos,bool upSide) {
-        HidePopups();
-
-        spawnPanel.Show(gm, pos, upSide);
-    }
-
-    private void ShowUpgradePanel(Tower tower) {
-        HidePopups();
-
-        upgradePanel.Show(tower, gm);
-    }
-
-    private void HidePopups() {
-        spawnPanel.Hide();
-        upgradePanel.Hide();
-    }
 }
 

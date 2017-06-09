@@ -110,7 +110,7 @@ public class MapEditor : Editor {
         string fileFullName = files[selectIndex].FullName;
 
         // 保存关卡
-        Tools.SaveLevle3(fileFullName, level);
+        Tools.SaveLevle(fileFullName, level);
 
         // 弹框提示
         EditorUtility.DisplayDialog("保存关卡", "保存成功", "确定");
