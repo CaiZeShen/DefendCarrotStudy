@@ -11,7 +11,7 @@ public class TowerIcon : MonoBehaviour {
     private SpriteRenderer render;
     private TowerInfo info;
     private Vector3 position;
-    private bool isEnough = false;
+    private bool isEnough;
 
     public void Load(GameModel gm,TowerInfo info,Vector3 pos,bool upSide) {
         // 保存必要的信息
@@ -46,7 +46,7 @@ public class TowerIcon : MonoBehaviour {
         object[] args = { info.id, position };
 
         // 消息冒泡
-        SendMessageUpwards("OnSpawnTower", args, SendMessageOptions.RequireReceiver);
+        SendMessageUpwards("OnSpawnTower", args);
     }
     #endregion
 }

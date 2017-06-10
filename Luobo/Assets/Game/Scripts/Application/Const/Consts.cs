@@ -54,6 +54,8 @@ public static class Consts {
     public const string E_SellTower = "E_SellTower";                    // 参数: SellTowerArgs
     public const string E_MapTileClick = "E_MapTileClick";              // 参数: MapTileClickArgs
 
+    public const string E_UpdateGold = "E_UpdateGold";              
+
     // 场景名
     public const string Init = "0.Init";
     public const string Start = "1.Start";

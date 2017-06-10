@@ -13,16 +13,27 @@ public abstract class Bullet : ReusableObject {
     public float DelayToDestory = 1f;
     protected bool isExploded = false;
     protected Animator animator;
+    private int level;
 
     public int ID { get; private set; }
 
-    public int Level { get; set; }
+    public int Level {
+        get { return level; }
+        set {
+            level = value;
+            transform.localScale = Vector3.one * (1 + (level - 1) * 0.15f);
+        }
+    }
 
     public float BaseSpeed { get; private set; }
 
     public float BaseAttack { get; private set; }
 
-    public float Speed { get { return BaseSpeed * Level; } }
+    public float Speed {
+        get {
+            return BaseSpeed * (1 + (Level - 1) * 0.2f);
+        }
+    }
 
     public float Attack { get { return BaseAttack * Level; } }
 

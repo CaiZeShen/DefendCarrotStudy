@@ -11,5 +11,6 @@ public struct MonsterInfo {
     public int id;
     public int hp;
     public float moveSpeed;
+    public int gold;
 }
 

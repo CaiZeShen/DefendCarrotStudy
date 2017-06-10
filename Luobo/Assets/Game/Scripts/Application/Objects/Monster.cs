@@ -23,6 +23,8 @@ public class Monster : Role {
         set { moveSpeed = value; }
     }
 
+    public int Gold { get; private set; }
+
     public void LoadRoadPath(Vector3[] path) {
         roadPoints = path;
         // 放置在起点
@@ -36,6 +38,7 @@ public class Monster : Role {
         MaxHP = info.hp;
         HP = info.hp;
         MoveSpeed = info.moveSpeed;
+        Gold = info.gold;
     }
 
     public override void OnUnspawn() {

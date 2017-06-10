@@ -24,10 +24,20 @@ public abstract class Tower : ReusableObject {
     public int ID { get; private set; }
 
     public int Price {
-        get { return BasePrice * (int)(1 + Level * 0.5f); }
+        get { return BasePrice * Level; }
     }
 
     public int BasePrice { get; private set; }
+
+    public int UpgradePrice {
+        get {return Price;}
+    }
+
+    public int SellPrice {
+        get {
+            return Price / 2;
+        }
+    }
 
     public int Level {
         get { return level; }
@@ -36,7 +46,7 @@ public abstract class Tower : ReusableObject {
             level = Mathf.Clamp(value, 0, MaxLevel);
 
             // 根据级别设置大小
-            transform.localScale = Vector3.one * (1 + level * 0.15f);
+            transform.localScale = Vector3.one * (1 + (level-1) * 0.15f);
         }
     }
 
@@ -72,8 +82,8 @@ public abstract class Tower : ReusableObject {
         GuardRange = info.guardRange;
         ShotRate = info.shotRate;
         UseBulletID = info.useBulletID;
-        level = 1;
-
+        Level = 1;
+        tile.tower = this;
     }
 
     public abstract void Attack();
@@ -93,8 +103,9 @@ public abstract class Tower : ReusableObject {
         GuardRange = 0;
         ShotRate = 0;
         UseBulletID = 0;
-        level = 0;
+        Level = 0;
         lastAttackTime = 0;
+        tile.tower = null;
     }
 
     #region Untiy Lifecycle

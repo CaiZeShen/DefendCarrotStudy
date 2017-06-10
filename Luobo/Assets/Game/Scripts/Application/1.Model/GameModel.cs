@@ -55,7 +55,10 @@ public class GameModel : Model {
 
     public int Gold {
         get {return gold;}
-        set { gold = value;}
+        set {
+            gold = value;
+            SendEvent(Consts.E_UpdateGold);
+        }
     }
 
     public bool IsPlaying {
@@ -85,7 +88,7 @@ public class GameModel : Model {
     // 游戏开始
     public void StartLevel(int levelIndex) {
         currentLevelIndex = levelIndex;
-        gold = PlayLevel.initSocre;
+        Gold = PlayLevel.initSocre;
     }
 
     // 游戏结束

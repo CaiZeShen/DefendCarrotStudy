@@ -10,6 +10,16 @@ using UnityEngine;
 
 public class UpgradeTowerCommand : Controller {
     public override void Execute(object args) {
+        UpgradeTowerArgs uTArgs = args as UpgradeTowerArgs;
+        GameModel gm = GetModel<GameModel>();
+
+        if (gm.Gold>=uTArgs.tower.UpgradePrice) {
+            // 扣钱
+            gm.Gold -= uTArgs.tower.UpgradePrice;
+
+            // 升级
+            uTArgs.tower.Level++;
+        }
         
     }
 }

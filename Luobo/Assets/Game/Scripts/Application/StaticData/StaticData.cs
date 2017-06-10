@@ -22,20 +22,20 @@ public class StaticData : Singleton<StaticData> {
     }
 
     private void InitMonsterInfos() {
-        monsterInfos.Add(0, new MonsterInfo { id = 0, hp = 1, moveSpeed = 1.5f });
-        monsterInfos.Add(1, new MonsterInfo { id = 1, hp = 2, moveSpeed = 1.5f });
-        monsterInfos.Add(2, new MonsterInfo { id = 2, hp = 3, moveSpeed = 1.5f });
-        monsterInfos.Add(3, new MonsterInfo { id = 3, hp = 4, moveSpeed = 1.5f });
-        monsterInfos.Add(4, new MonsterInfo { id = 4, hp = 5, moveSpeed = 1.5f });
-        monsterInfos.Add(5, new MonsterInfo { id = 5, hp = 6, moveSpeed = 1.5f });
+        monsterInfos.Add(0, new MonsterInfo { id = 0, hp = 3, moveSpeed = 1.5f, gold = 1 });
+        monsterInfos.Add(1, new MonsterInfo { id = 1, hp = 5, moveSpeed = 1.5f, gold = 1 });
+        monsterInfos.Add(2, new MonsterInfo { id = 2, hp = 7, moveSpeed = 1.5f, gold = 1 });
+        monsterInfos.Add(3, new MonsterInfo { id = 3, hp = 9, moveSpeed = 1.5f, gold = 1 });
+        monsterInfos.Add(4, new MonsterInfo { id = 4, hp = 11, moveSpeed = 1.5f, gold = 1 });
+        monsterInfos.Add(5, new MonsterInfo { id = 5, hp = 13, moveSpeed = 1.5f, gold = 1 });
 
-        monsterInfos.Add(101, new MonsterInfo { id = 101, hp = 10, moveSpeed = 1f });
-        monsterInfos.Add(102, new MonsterInfo { id = 102, hp = 12, moveSpeed = 1f });
-        monsterInfos.Add(103, new MonsterInfo { id = 103, hp = 14, moveSpeed = 1f });
-        monsterInfos.Add(104, new MonsterInfo { id = 104, hp = 16, moveSpeed = 1f });
-        monsterInfos.Add(105, new MonsterInfo { id = 105, hp = 18, moveSpeed = 1f });
+        monsterInfos.Add(101, new MonsterInfo { id = 101, hp = 20, moveSpeed = 1f, gold = 2 });
+        monsterInfos.Add(102, new MonsterInfo { id = 102, hp = 22, moveSpeed = 1f, gold = 2 });
+        monsterInfos.Add(103, new MonsterInfo { id = 103, hp = 24, moveSpeed = 1f, gold = 2 });
+        monsterInfos.Add(104, new MonsterInfo { id = 104, hp = 26, moveSpeed = 1f, gold = 2 });
+        monsterInfos.Add(105, new MonsterInfo { id = 105, hp = 28, moveSpeed = 1f, gold = 2 });
 
-        monsterInfos.Add(200, new MonsterInfo { id = 200, hp = 30, moveSpeed = 0.8f });
+        monsterInfos.Add(200, new MonsterInfo { id = 200, hp = 40, moveSpeed = 0.8f, gold = 3 });
     }
 
     private void InitLuoboInfos() {

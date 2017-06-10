@@ -62,13 +62,12 @@ public class Spawner : View {
         SendEvent(Consts.E_MapTileClick, mTArgs);
     }
 
-
     // 怪物到达终点
     private void OnMonsterReached(Monster obj) {
         // 萝卜掉血
         luobo.Damage(1);
 
-        obj.HP = 0;
+        UnSpawnMonster(obj.gameObject);
     }
 
     // 怪物血量改变
@@ -78,14 +77,11 @@ public class Spawner : View {
 
     // 怪物死亡
     private void OnMonsterDied(Role obj) {
-        Game.Instance.ObjectPool.Unspawn(obj.gameObject);
+        // 加钱
+        Monster monster = obj as Monster;
+        gameModel.Gold += monster.Gold;
 
-        GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
-
-        // 判断是否胜利
-        if (!luobo.IsDead && roundModel.AllRoundsComplete && monsters.Length <= 0) {
-            SendEvent(Consts.E_EndLevel, new EndLevelArgs { LevelID = gameModel.CurrentLevelIndex, IsWin = true });
-        }
+        UnSpawnMonster(obj.gameObject);
     }
 
     // 萝卜死亡
@@ -116,16 +112,12 @@ public class Spawner : View {
 
         // 设置塔信息
         Tower tower = go.GetComponent<Tower>();
-        tower.transform.position = pos;
         Tile tile = map.GetTile(pos);
+        tower.transform.position = pos;
         tower.Load(towerID, tile,map.MapRect);
-
-        // 设置塔所在格子信息
-        tile.tower = tower;
         
-
         // 消耗金币(写这里感觉不对,应该在控制器写吧)
-        gameModel.Gold -= info.basePrice;
+        gameModel.Gold -= tower.BasePrice;
     }
 
     // 生产萝卜
@@ -134,6 +126,17 @@ public class Spawner : View {
         luobo = go.GetComponent<Luobo>();
         luobo.transform.position = pos;
         luobo.died += OnLuoboDied;
+    }
+
+    // 回收怪物
+    private void UnSpawnMonster(GameObject go) {
+        Game.Instance.ObjectPool.Unspawn(go);
+
+        // 判断是否胜利
+        GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
+        if (!luobo.IsDead && roundModel.AllRoundsComplete && monsters.Length <= 0) {
+            SendEvent(Consts.E_EndLevel, new EndLevelArgs { LevelID = gameModel.CurrentLevelIndex, IsWin = true });
+        }
     }
 }
 

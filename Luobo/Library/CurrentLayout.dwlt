@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 392}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -40,14 +40,14 @@ MonoBehaviour:
     y: 671
     width: 1439
     height: 276
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
   - {fileID: 11}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 1439
     height: 947
-  m_MinSize: {x: 202, y: 342}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 232, y: 492}
+  m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 10
 --- !u!114 &4
@@ -93,7 +93,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 392}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -157,8 +157,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 681, y: 342}
-  m_MaxSize: {x: 12006, y: 8042}
+  m_MinSize: {x: 711, y: 492}
+  m_MaxSize: {x: 18006, y: 14042}
   vertical: 0
   controlID: 9
 --- !u!114 &8
@@ -290,7 +290,7 @@ MonoBehaviour:
     width: 1437
     height: 650
   m_MaximizeOnPlay: 0
-  m_Gizmos: 1
+  m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 0900000000000000000000000b000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 24060000
     m_LastClickedID: 0
     m_ExpandedIDs: e2fbffff00000000
     m_RenameOverlay:
@@ -503,19 +503,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Game/Scripts/Application/3.Controller
+    - Assets/Game/Scripts/Application/2.View
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Game/Scripts/Application/3.Controller
+  - Assets/Game/Scripts/Application/2.View
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\my unity\DefendCarrotStudy\Luobo
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 330}
-    m_SelectedIDs: 6c280000
-    m_LastClickedID: 10348
-    m_ExpandedIDs: 0000000060250000ce2500006c260000a2260000b6260000b8260000ea260000f026000036270000c027000072280000e4280000f02a00005c2b0000aa2c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 390}
+    m_SelectedIDs: c0270000
+    m_LastClickedID: 10176
+    m_ExpandedIDs: 0000000060250000ce2500006c260000a2260000b6260000b8260000ea260000f026000036270000c027000072280000e4280000f02a00005c2b00001c2c0000aa2c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -570,22 +570,22 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 1831000024320000642900003e280000b4290000222800005c2a0000423dfeffae26000002270000ea26000090250000be2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Spawner
+      m_OriginalName: Spawner
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 1572
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_CreateAssetUtility:

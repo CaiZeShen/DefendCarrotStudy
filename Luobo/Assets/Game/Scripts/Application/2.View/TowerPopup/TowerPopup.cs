@@ -56,7 +56,7 @@ public class TowerPopup : View {
     private void Awake() {
         spawnPanel = GetComponentInChildren<SpawnPanel>();
         upgradePanel = GetComponentInChildren<UpgradePanel>();
-
+        
         gm = GetModel<GameModel>();
     }
 
@@ -71,7 +71,6 @@ public class TowerPopup : View {
         Vector3 pos = (Vector3)args[1];
 
         SendEvent(Consts.E_SpawnTower, new SpawnTowerArgs { towerID = towerID, pos = pos });
-        spawnPanel.Hide();
     }
 
     private void OnUpgradeTower(Tower tower) {
@@ -79,7 +78,7 @@ public class TowerPopup : View {
     }
 
     private void OnSellTower(Tower tower) {
-        SendEvent(Consts.E_SellTower, new UpgradeTowerArgs { tower = tower });
+        SendEvent(Consts.E_SellTower, new SellTowerArgs { tower = tower });
     }
     #endregion
 }

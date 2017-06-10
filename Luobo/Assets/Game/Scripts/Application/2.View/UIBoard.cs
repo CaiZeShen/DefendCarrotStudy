@@ -25,6 +25,7 @@ public class UIBoard : View {
     private GameSpeed gameSpeed;
     private int score;
     private RoundModel roundModel;
+    private GameModel gameModel;
     #endregion
 
     #region 属性
@@ -71,12 +72,16 @@ public class UIBoard : View {
 
     public override void RegisterEvents() {
         attentionEvnets.Add(Consts.E_StartRound);
+        attentionEvnets.Add(Consts.E_UpdateGold);
     }
 
     public override void HandleEvent(string eventName, object arg) {
         switch (eventName) {
             case Consts.E_StartRound:
                 UpdateRoundInfo(roundModel.RoundIndex + 1, roundModel.RoundTotal);
+                break;
+            case Consts.E_UpdateGold:
+                Score = gameModel.Gold;
                 break;
         }
     }
@@ -94,11 +99,12 @@ public class UIBoard : View {
         pauseBtn = transform.Find("PauseBtn").GetComponent<Button>();
         menuBtn = transform.Find("MenuBtn").GetComponent<Button>();
 
+        roundModel = GetModel<RoundModel>();
+        gameModel = GetModel<GameModel>();
+
         IsPlaying = true;
         GameSpeed = GameSpeed.One;
-        Score = 0;
-
-        roundModel = GetModel<RoundModel>();
+        Score = gameModel.Gold;
     }
 
     private void OnEnable() {
